@@ -20,12 +20,11 @@ export class LoginComponent {
       email: this.email,
       password: this.password,
     };
-    console.log(formData, "FORM");
     this.http
       .post('http://localhost:5000/api/users/login', formData)
       .subscribe((data: any) => {
         try {
-          console.log(data);
+          localStorage.setItem('formData', JSON.stringify(data));
           alert('Student Login Successfully');
           this.router.navigateByUrl('home');
         } catch (error) {
